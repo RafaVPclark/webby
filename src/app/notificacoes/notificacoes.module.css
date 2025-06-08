@@ -1,0 +1,61 @@
+.notificacoes{
+    height: 100vh;
+    background-color: #104C42;
+    overflow:hidden;
+}
+.conteudoDireita{
+    background-color: #fff;
+    min-height: 100vh;
+    overflow: hidden;
+}
+.imgCustom{
+    padding-left: 100px;
+    filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.7)); /* luz verde, altere */
+}
+
+.conteudoTitle{
+    color: #004D40;
+}
+
+.btnCustom{
+    background-color: #004D40;
+    border-radius: 30px;
+    color: #ddd;
+    width: 120px;
+}
+@media (max-width: 768px) {
+  .conteudoDireita {
+    overflow-y: auto; /* ou scroll */
+  }
+  .notificacoes{
+    overflow-y: auto; /* ou scroll */
+  }
+}
+.cardNotificacoes{
+    background-color: #004D40;
+    color: #fff;
+    border-radius: 30px 0px 30px 0px;
+    min-height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.conteudoInterno{
+    font-size: 1rem;
+}
+/* Mobile */
+.detalhesNotificacoes{
+    min-height: 80vh;
+    border-radius: 50px 50px 0px 0px;
+    padding-top: 100px;
+    background-color: #fff;
+}
+
+.imgCustom2{
+    /* position: absolute; */
+    /* top: 0; */
+    width: 250px;
+    margin-bottom: -100px;
+    /* left: 50%; */
+    /* transform: translateX(-50%); */
+}

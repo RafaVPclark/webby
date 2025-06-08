@@ -1,0 +1,129 @@
+/* DESKTOP */
+.dashboard{
+    min-height: 100vh;
+    background: linear-gradient(135deg, #104C42, #0C7C59, #38A3A5, #57CC99);
+
+}
+
+.welcome{
+    background-color: #dfdfdf;
+    color: #104C42;
+}
+.overview{
+    min-height: 180px;
+    width: 97vw;
+    background-color: #dfdfdf;
+    border-radius: 25px;
+}
+.cardOverView{
+    border: 3px solid #104C42;
+    height: 120px;
+    border-radius: 20px;
+}
+.icon{
+    font-size: 2rem;
+    color: #104C42;
+}
+.icon2{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #dfdfdf;
+    font-size: 2rem;
+    color: #104C42;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.imgCustomHacker{
+    top: 0;
+    left: 30;
+    position:absolute;
+    width: 180px;
+}
+
+/* Usuários totais */
+.caixaBaixo{
+    width: 97vw;
+}
+.usuariosTotais{
+    min-height: 300px;
+    background-color:#dfdfdf ;
+    border-radius: 30px;
+}
+.conhecidosXdesconhecidos{
+    min-height: 300px;
+    background-color: #dfdfdf;
+    border-radius: 30px;
+}
+
+.top10direito{
+    min-height: 500px;
+    background-color: #dfdfdf;
+    border-radius: 30px 0px 30px 0px;
+}
+
+.coisasClicaveis{
+    min-height: 200px;
+}
+.alinhamento {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px; /* espaço entre o ícone e o texto */
+}
+.conteudo{
+    color: #dfdfdf;
+}
+
+.linkSemEstilo {
+  text-decoration: none; /* remove sublinhado */
+  color: inherit;        /* mantém a cor original */
+  display: flex;         /* mantém os itens alinhados */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* MOBILE */
+.title{
+    color: #104C42;
+}
+.graficoMobile{
+    min-height: 200px;
+    border-radius: 0px 30px 0px 30px;
+    background-color: #dfdfdf;
+}
+.conteudoDashboardMobile{
+    color: #104C42;
+}
+
+.hackerMobileImg{
+    position: absolute;
+    width: 160px;
+    top: -10;
+    left: 30;
+}
+.icon2mobile{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #dfdfdf;
+    font-size: 1.5rem;
+    color: #104C42;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.icon3mobile{
+    font-size: 1.5rem;
+    color: #104C42;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.conteudo2mobile{
+    font-size: 1rem;
+    color: #104C42;
+}

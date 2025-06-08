@@ -1,0 +1,69 @@
+.detalhes{
+    height: 100vh;
+    background-color: #104C42;
+    overflow:hidden;
+}
+.conteudoDireita{
+    background-color: #fff;
+    min-height: 100vh;
+    overflow: hidden;
+}
+.imgCustom{
+    filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.7)); /* luz verde, altere */
+}
+
+.conteudoTitle{
+    color: #104C42;
+}
+.conteudoTitleSecundario{
+    font-size: 0.9rem; 
+    color: #104C42;
+}
+.inputCustom{
+    max-width: 300px;
+    background: #fff;
+    border: 2px solid #104C42;
+}
+
+.btnCustom{
+    background-color: #004D40;
+    border-radius: 30px;
+    color: #ddd;
+    width: 120px;
+}
+.iconCustom{
+    font-size: 1rem;
+    color: #004D40;
+}
+.acoesRapidasContent{
+    color: #004D40;
+    font-size: 1rem;
+}
+@media (max-width: 768px) {
+  .conteudoDireita {
+    overflow-y: auto; /* ou scroll */
+  }
+  .detalhes{
+    overflow-y: auto; /* ou scroll */
+  }
+  .inputCustom{
+    width: 100%;
+  }
+}
+
+/* Mobile */
+.detalhesMobile{
+    min-height: 80vh;
+    border-radius: 50px 50px 0px 0px;
+    padding-top: 100px;
+    background-color: #fff;
+}
+
+.imgCustom2{
+    /* position: absolute; */
+    /* top: 0; */
+    width: 250px;
+    margin-bottom: -100px;
+    /* left: 50%; */
+    /* transform: translateX(-50%); */
+}

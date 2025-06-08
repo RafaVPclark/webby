@@ -1,0 +1,35 @@
+.inputCustom{
+    border: 1px solid #898989;
+}
+.textTitle{
+    color: #104C42;
+}
+.iconCustom{
+    font-size: 1.5rem;
+    color: #104C42;
+}
+.btnCustom{
+    width: 150px;
+    height: 40px;
+    background-color: #104C42;
+    border-radius: 30px;
+    border: 0px;
+    color: #fff;
+}
+
+.btnLimpar{
+    width: 150px;
+    height: 40px;
+    background-color: #fff;
+    border: 3px solid #104C42;
+    color: #104C42;
+    border-radius: 30px;
+}
+
+.imgEngrenagem{
+    width: 200px;
+    position: absolute;
+    bottom: 100;
+    right: -65;
+    transform: rotate(-60deg);
+}

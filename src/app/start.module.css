@@ -1,0 +1,28 @@
+.parte_superior{
+    min-height: 50vh;
+    border-radius: 0px 0px 50px 50px;
+    background-color: #fff;
+}
+.parte_inferior{
+    background-color: #104C42;
+}
+.start{
+    background-color: #104C42;
+    min-height: 100vh;
+}
+.img_custom{
+    max-width: 200px;
+    height: auto;
+}
+.textPrincipal{
+    color: #fff;
+}
+.textSecundario{
+    color: #fff;
+}
+.btnCustom{
+    color: #104C42;
+    width: 230px;
+    border-radius: 15px;
+    background-color: #fff;
+}

@@ -1,0 +1,35 @@
+.login{
+    height: 100vh;
+    overflow-y: hidden;
+}
+.ladoEsquerdo{
+    height: 100vh;
+    background-color: #104C42;
+}
+.ladoDireito{
+    overflow: hidden;
+}
+.imgCustom{
+    filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.7)); /* luz verde, altere */
+}
+.btnCustom{
+    width: 100px;
+    background-color: #104C42;
+    color: #fff;
+}
+.btnCustom2{
+    background-color: #104C42;
+    color: #fff;
+}
+.textPrimario{
+    color: #104C42;
+}
+.line{
+  border-top-width: 3px !important;
+  border-color: #004D40 !important;
+}
+.imgCustom2{
+    position: absolute;
+    bottom: 0;
+    width: 300px;
+}
