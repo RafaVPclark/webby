@@ -1,0 +1,144 @@
+import { useState } from 'react';
+
+// Adicione no início do seu componente
+const ITENS_POR_PAGINA = 5; // Ajuste conforme necessário
+
+// Dentro do seu componente principal, adicione:
+const [paginaConhecidos, setPaginaConhecidos] = useState(1);
+const [paginaDesconhecidos, setPaginaDesconhecidos] = useState(1);
+
+<Container fluid className="d-none d-md-block">
+  <Row>
+    <Col md="7">
+      <img
+        src={"/hackerLivro.png"}
+        className={`img-fluid ${styles.imgCustom} text-center`}
+        alt="Imagem ilustrativa"
+      />
+    </Col>
+    <Col md="5" className={`${styles.conteudoDireita} pt-3`}>
+      <Row className={`${styles.detalhesNotificacoes}`}>
+        <Col xs="10" className={`${styles.conteudoDireita} pt-3 mx-auto mt-4`}>
+          <Row>
+            <Col>
+              <h3 className={`text-center ${styles.conteudoTitle}`}>
+                <strong>Histórico</strong>
+              </h3>
+            </Col>
+          </Row>
+          <Row>
+            <Col md="10" className="mx-auto mt-3">
+              <input
+                type="date"
+                value={dataSelecionada}
+                onChange={(e) => setDataSelecionada(e.target.value)}
+                className={`form-control ${styles.inputCustom} mb-3`}
+              />
+
+              <Tabs defaultActiveKey="desconhecidos" id="device-tabs">
+                <Tab eventKey="conhecidos" title="Conhecidos">
+                  {(() => {
+                    const dispositivosConhecidos = Object.entries(
+                      agruparPorData(filtrarDispositivos("conhecidos"))
+                    );
+                    const totalPaginas = Math.ceil(dispositivosConhecidos.length / ITENS_POR_PAGINA);
+                    const dispositivosPaginados = dispositivosConhecidos.slice(
+                      (paginaConhecidos - 1) * ITENS_POR_PAGINA,
+                      paginaConhecidos * ITENS_POR_PAGINA
+                    );
+
+                    return (
+                      <>
+                        {dispositivosPaginados.map(([data, dispositivos]) => (
+                          <div key={`conhecidos-${data}`}>
+                            <h5 className="text-center mt-4">{data}</h5>
+                            <Col md="10" className={`mx-auto ${styles.cardConteudo} mt-3`}>
+                              <RenderizarDispositivos dispositivos={dispositivos} />
+                            </Col>
+                          </div>
+                        ))}
+
+                        {dispositivosConhecidos.length === 0 && (
+                          <p className="text-center mt-4">Nenhum dispositivo conhecido encontrado</p>
+                        )}
+
+                        {dispositivosConhecidos.length > 0 && (
+                          <div className="d-flex justify-content-between mt-3">
+                            <button
+                              className="btn btn-primary"
+                              disabled={paginaConhecidos === 1}
+                              onClick={() => setPaginaConhecidos(paginaConhecidos - 1)}
+                            >
+                              Anterior
+                            </button>
+                            <span>Página {paginaConhecidos} de {totalPaginas}</span>
+                            <button
+                              className="btn btn-primary"
+                              disabled={paginaConhecidos === totalPaginas}
+                              onClick={() => setPaginaConhecidos(paginaConhecidos + 1)}
+                            >
+                              Próximo
+                            </button>
+                          </div>
+                        )}
+                      </>
+                    );
+                  })()}
+                </Tab>
+
+                <Tab eventKey="desconhecidos" title="Desconhecidos">
+                  {(() => {
+                    const dispositivosDesconhecidos = Object.entries(
+                      agruparPorData(filtrarDispositivos("desconhecidos"))
+                    );
+                    const totalPaginas = Math.ceil(dispositivosDesconhecidos.length / ITENS_POR_PAGINA);
+                    const dispositivosPaginados = dispositivosDesconhecidos.slice(
+                      (paginaDesconhecidos - 1) * ITENS_POR_PAGINA,
+                      paginaDesconhecidos * ITENS_POR_PAGINA
+                    );
+
+                    return (
+                      <>
+                        {dispositivosPaginados.map(([data, dispositivos]) => (
+                          <div key={`desconhecidos-${data}`}>
+                            <Col md="10" className={`mx-auto ${styles.cardConteudo} mt-3`}>
+                              <RenderizarDispositivos dispositivos={dispositivos} />
+                            </Col>
+                          </div>
+                        ))}
+
+                        {dispositivosDesconhecidos.length === 0 && (
+                          <p className="text-center mt-4">Nenhum dispositivo desconhecido encontrado</p>
+                        )}
+
+                        {dispositivosDesconhecidos.length > 0 && (
+                          <div className="d-flex justify-content-between mt-3">
+                            <button
+                              className="btn btn-primary"
+                              disabled={paginaDesconhecidos === 1}
+                              onClick={() => setPaginaDesconhecidos(paginaDesconhecidos - 1)}
+                            >
+                              Anterior
+                            </button>
+                            <span>Página {paginaDesconhecidos} de {totalPaginas}</span>
+                            <button
+                              className="btn btn-primary"
+                              disabled={paginaDesconhecidos === totalPaginas}
+                              onClick={() => setPaginaDesconhecidos(paginaDesconhecidos + 1)}
+                            >
+                              Próximo
+                            </button>
+                          </div>
+                        )}
+                      </>
+                    );
+                  })()}
+                </Tab>
+              </Tabs>
+            </Col>
+          </Row>
+        </Col>
+      </Row>
+    </Col>
+  </Row>
+</Container>

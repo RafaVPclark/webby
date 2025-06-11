@@ -1,7 +1,84 @@
+"use client";
 import styles from "./dashboard.module.css";
 import { Container, Row, Col } from "reactstrap";
+import ListGroup from "react-bootstrap/ListGroup";
 import Link from "next/link";
+import {
+  PieChart,
+  Pie,
+  Cell,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
+import { useEffect, useState } from "react";
 export default function Dashboard() {
+  const [conhecidos, setConhecidos] = useState("");
+  const [desconhecidos, setDesconhecidos] = useState("");
+  const [totalDispositivos, setTotalDispositivos] = useState("");
+  const [usuariosMaisFrequentes, setUsuariosFrequentes] = useState([]);
+  // Recuperar conhecidos e desconhecidos
+  useEffect(() => {
+    async function buscarConhecidosDesconhecidos() {
+      try {
+        const resposta = await fetch(
+          "https://backend-ti5-production.up.railway.app/stats/overview",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (!resposta.ok) throw new Error("Erro ao buscar overview");
+
+        const dados = await resposta.json();
+        console.log(dados);
+        setConhecidos(dados.conhecidos || 0);
+        setDesconhecidos(dados.desconhecidos || 0);
+        setTotalDispositivos(dados.totalDispositivos || 0);
+      } catch (erro) {
+        console.error("Erro ao buscar dados de overview", erro);
+      }
+    }
+
+    buscarConhecidosDesconhecidos();
+  }, []);
+  // Recuperar os usuários mais frequentes
+  useEffect(() => {
+    async function buscarCindoMaisFrequentes() {
+      try {
+        const resposta = await fetch(
+          "https://backend-ti5-production.up.railway.app/stats/frequent-users",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (!resposta.ok) throw new Error("Erro ao buscar usuários frequentes");
+
+        const dados = await resposta.json();
+        setUsuariosFrequentes(dados);
+        console.log(dados);
+      } catch (erro) {
+        console.error("Erro ao buscar dados de overview", erro);
+      }
+    }
+
+    buscarCindoMaisFrequentes();
+  }, []);
+  const data = [
+    { name: "Conhecidos", value: conhecidos },
+    { name: "Desconhecidos", value: desconhecidos },
+  ];
+
+  const COLORS = ["#0088FE", "#FF8042"];
+  // console.log(conhecidos);
+  // console.log(desconhecidos);
   return (
     <section id="dashboard">
       {/* Versão desktop */}
@@ -19,71 +96,17 @@ export default function Dashboard() {
             </Row>
           </Col>
         </Row>
-        <Row>
-          <Col xs="12" className={`${styles.overview} mx-auto mt-4 pb-4`}>
-            <Row>
-              <Col md="11" className="mx-auto mt-3">
-                <h2>Visão Geral</h2>
-              </Col>
-            </Row>
-            <Row>
-              <Col md="2" className={`${styles.cardOverView} mx-auto pt-3`}>
-                <Row className="d-flex align-items-center text-center">
-                  <Col xs="3" className="d-flex  align-items-center ms-auto">
-                    <i className="bi bi-database-check fs-1"></i>
-                  </Col>
-                  <Col xs="7" className="d-flex flex-column me-auto ">
-                    <h4>123</h4>
-                    <h5>Total de chamadas</h5>
-                  </Col>
-                </Row>
-              </Col>
-              <Col md="2" className={`${styles.cardOverView} mx-auto pt-3`}>
-                <Row className="d-flex align-items-center text-center">
-                  <Col xs="3" className="d-flex  align-items-center ms-auto">
-                    <i className="bi bi-database-check fs-1"></i>
-                  </Col>
-                  <Col xs="7" className="d-flex flex-column me-auto ">
-                    <h4>123</h4>
-                    <h5>Total de chamadas</h5>
-                  </Col>
-                </Row>
-              </Col>
-              <Col md="2" className={`${styles.cardOverView} mx-auto pt-3`}>
-                <Row className="d-flex align-items-center text-center">
-                  <Col xs="3" className="d-flex  align-items-center ms-auto">
-                    <i className="bi bi-database-check fs-1"></i>
-                  </Col>
-                  <Col xs="7" className="d-flex flex-column me-auto ">
-                    <h4>123</h4>
-                    <h5>Total de chamadas</h5>
-                  </Col>
-                </Row>
-              </Col>
-              <Col md="2" className={`${styles.cardOverView} mx-auto pt-3`}>
-                <Row className="d-flex align-items-center text-center">
-                  <Col xs="3" className="d-flex  align-items-center ms-auto">
-                    <i className="bi bi-database-check fs-1"></i>
-                  </Col>
-                  <Col xs="7" className="d-flex flex-column me-auto ">
-                    <h4>123</h4>
-                    <h5>Total de chamadas</h5>
-                  </Col>
-                </Row>
-              </Col>
-            </Row>
-          </Col>
-        </Row>
+
         <Row className="mt-4">
           <Col md="12" className={`mx-auto ${styles.caixaBaixo}`}>
             <Row>
-              <Col md="8" className="">
+              <Col md="8">
                 <Row>
                   <Col
                     md="4"
-                    className={`${styles.usuariosTotais} text-center`}
+                    className={`d-flex flex-column justify-content-center align-items-center ${styles.usuariosTotais}`}
                   >
-                    <h3 className="mt-5 ">Total de usuários</h3>
+                    <h3 className="mt-5">Total de dispositivos</h3>
                     <Row>
                       <Col md="12">
                         <i className={`bi bi-people-fill ${styles.icon}`}></i>
@@ -91,23 +114,62 @@ export default function Dashboard() {
                     </Row>
                     <Row>
                       <Col md="12" className="mt-3">
-                        <h2>120</h2>
+                        <h2>{totalDispositivos}</h2>
                       </Col>
                     </Row>
                   </Col>
+
                   <Col
                     md="7"
                     className={`mx-auto ${styles.conhecidosXdesconhecidos}`}
                   >
-                    <h3 className="mt-4 ms-4">Usuários</h3>
                     <Row>
+                      <Col>
+                        <h3 className="mt-4 ms-4">Usuários</h3>
+                      </Col>
+                      <Col>
+                        <h5 className="mt-4">{conhecidos} Conhecidos</h5>
+                        <h5>{desconhecidos} Desconhecidos</h5>
+                      </Col>
+                    </Row>
+                    {/* <Row>
                       <Col md="8">
                         {" "}
                         <h1 className="mt-5 ms-5">Gráfico</h1>
                       </Col>
                       <Col md="4">
-                        <h5>16 Conhecidos</h5>
-                        <h5>254 Desconhecidos</h5>
+                        <h5>{conhecidos} Conhecidos</h5>
+                        <h5>{desconhecidos} Desconhecidos</h5>
+                      </Col>
+                    </Row> */}
+                    <Row>
+                      <Col md="12" className="mx-auto">
+                        <div style={{ width: "100%", height: 400 }}>
+                          <ResponsiveContainer>
+                            <PieChart>
+                              <Pie
+                                data={data}
+                                dataKey="value"
+                                nameKey="name"
+                                cx="50%"
+                                cy="50%"
+                                outerRadius={120}
+                                label={({ name, percent }) =>
+                                  `${name}: ${(percent * 100).toFixed(0)}%`
+                                }
+                              >
+                                {data.map((entry, index) => (
+                                  <Cell
+                                    key={`cell-${index}`}
+                                    fill={COLORS[index % COLORS.length]}
+                                  />
+                                ))}
+                              </Pie>
+                              <Tooltip />
+                              <Legend verticalAlign="bottom" height={36} />
+                            </PieChart>
+                          </ResponsiveContainer>
+                        </div>
                       </Col>
                     </Row>
                   </Col>
@@ -119,25 +181,32 @@ export default function Dashboard() {
                   >
                     <Row className="gap-5">
                       <Col className={`${styles.alinhamento}`}>
-                        <Link href={"/"} className={styles.linkSemEstilo}>
-                          <i className={`bi bi-search ${styles.icon2}`}></i>
-                          <h4 className={`${styles.conteudo}`}>Escanear</h4>
-                        </Link>
-                      </Col>
-
-                      <Col className={`${styles.alinhamento}`}>
-                        <Link href={"/"} className={styles.linkSemEstilo}>
+                        <Link
+                          href={"/historico"}
+                          className={styles.linkSemEstilo}
+                        >
                           <i className={`bi bi-book ${styles.icon2}`}></i>
                           <h4 className={`${styles.conteudo}`}>Histórico</h4>
                         </Link>
                       </Col>
 
                       <Col className={`${styles.alinhamento}`}>
-                        <Link href={"/"} className={styles.linkSemEstilo}>
+                        <Link href={"/config"} className={styles.linkSemEstilo}>
                           <i className={`bi bi-gear-fill ${styles.icon2}`}></i>
                           <h4 className={`${styles.conteudo}`}>
                             Configurações
                           </h4>
+                        </Link>
+                      </Col>
+                      <Col className={`${styles.alinhamento}`}>
+                        <Link
+                          href={"/devices"}
+                          className={styles.linkSemEstilo}
+                        >
+                          <i
+                            className={`bi bi-phone-vibrate ${styles.icon2}`}
+                          ></i>
+                          <h4 className={`${styles.conteudo}`}>Dispositivos</h4>
                         </Link>
                       </Col>
                     </Row>
@@ -146,9 +215,17 @@ export default function Dashboard() {
               </Col>
               <Col md="4" className={`${styles.top10direito} text-center`}>
                 <h2 className="mt-3">5 USUÁRIOS MAIS FREQUENTES</h2>
-                <Row>
-                  <Col></Col>
-                </Row>
+                <ListGroup className="mt-3">
+                  {usuariosMaisFrequentes.map((user, idx) => (
+                    <ListGroup.Item
+                      key={user.mac || idx}
+                      className="d-flex justify-content-between"
+                    >
+                      <span>{user.mac}</span>
+                      <span>{user.vezes} vezes</span>
+                    </ListGroup.Item>
+                  ))}
+                </ListGroup>
               </Col>
             </Row>
           </Col>
@@ -167,14 +244,39 @@ export default function Dashboard() {
         ></img>
         <Row>
           <Col xs="10" className={`mx-auto ${styles.graficoMobile} mt-3 `}>
-            <Row className=" align-items-center justify-content-between pt-5">
+            <Row className="align-items-center justify-content-between pt-5">
               <Col xs="6" className="text-center">
-                <h5>Gráfico</h5>
+                <div style={{ width: "100%", height: 200 }}>
+                  <ResponsiveContainer>
+                    <PieChart>
+                      <Pie
+                        data={data}
+                        dataKey="value"
+                        nameKey="name"
+                        cx="50%"
+                        cy="50%"
+                        outerRadius={80}
+                        label={({ name, percent }) =>
+                          `${name}: ${(percent * 100).toFixed(0)}%`
+                        }
+                      >
+                        {data.map((entry, index) => (
+                          <Cell
+                            key={`cell-${index}`}
+                            fill={COLORS[index % COLORS.length]}
+                          />
+                        ))}
+                      </Pie>
+                      <Tooltip />
+                    </PieChart>
+                  </ResponsiveContainer>
+                </div>
               </Col>
               <Col xs="6" className={`${styles.conteudoDashboardMobile}`}>
                 <h3>Status</h3>
-                <h5>Conhecido: 10</h5>
-                <h5>Desconhecido: 120</h5>
+                <h5>Conhecido: {conhecidos}</h5>
+                <h5>Desconhecido: {desconhecidos}</h5>
+                <h5 className="mt-3">Total: {totalDispositivos}</h5>
               </Col>
             </Row>
           </Col>
@@ -191,21 +293,23 @@ export default function Dashboard() {
           >
             <Row>
               <Col className={`${styles.alinhamento}`}>
-                <Link href={"/"} className={styles.linkSemEstilo}>
+                <Link href={"/devices"} className={styles.linkSemEstilo}>
                   <i className={`bi bi-search me-4 ${styles.icon2mobile}`}></i>
-                  <h4 className={`${styles.conteudo2mobile} me-4`}>Escanear</h4>
+                  <h4 className={`${styles.conteudo2mobile} me-4`}>
+                    Dispositivos
+                  </h4>
                 </Link>
               </Col>
 
               <Col className={`${styles.alinhamento}`}>
-                <Link href={"/"} className={styles.linkSemEstilo}>
+                <Link href={"/historico"} className={styles.linkSemEstilo}>
                   <i className={`bi bi-book ${styles.icon2mobile}`}></i>
                   <h4 className={`${styles.conteudo2mobile}`}>Histórico</h4>
                 </Link>
               </Col>
 
               <Col className={`${styles.alinhamento}`}>
-                <Link href={"/"} className={styles.linkSemEstilo}>
+                <Link href={"/config"} className={styles.linkSemEstilo}>
                   <i className={`bi bi-gear-fill ${styles.icon2mobile}`}></i>
                   <h4 className={`${styles.conteudo2mobile}`}>Configurações</h4>
                 </Link>
@@ -226,18 +330,38 @@ export default function Dashboard() {
               </Col>
               <Col xs="8" className="mx-auto">
                 <h5 className="m-0">
-                  Nenhum dispositivo desconhecido no momento
+                  {desconhecidos === 0
+                    ? "Nenhum dispositivo desconhecido no momento"
+                    : `${desconhecidos} dispositivo(s) desconhecido(s) encontrado(s) e ${conhecidos} conhecido(s) encontrado(s)`}
                 </h5>
               </Col>
             </Row>
-            <Row className="align-items-center mt-4 mb-5">
+            {/* <Row className="align-items-center mt-4 mb-5">
               <Col xs="2" className="d-flex justify-content-center">
                 <i className={`bi bi-broadcast-pin ${styles.icon3mobile}`}></i>
               </Col>
               <Col xs="8" className="mx-auto">
-                <h5 className="m-0">Conexões ativas no momento: 5</h5>
+                <h5 className="m-0">
+                  Conexões ativas no momento: {totalDispositivos}
+                </h5>
               </Col>
-            </Row>
+            </Row> */}
+          </Col>
+        </Row>
+        <Row className="mt-3 mb-5">
+          <Col xs="10" className="mx-auto">
+            <h4 className={`${styles.title}`}>Usuários Frequentes</h4>
+            <ListGroup className="mt-3">
+              {usuariosMaisFrequentes.slice(0, 3).map((user, idx) => (
+                <ListGroup.Item
+                  key={user.mac || idx}
+                  className="d-flex justify-content-between"
+                >
+                  <span>{user.mac}</span>
+                  <span>{user.vezes} vezes</span>
+                </ListGroup.Item>
+              ))}
+            </ListGroup>
           </Col>
         </Row>
       </Container>

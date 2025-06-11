@@ -1,14 +1,58 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { Container, Row, Col } from "reactstrap";
 import styles from "./config.module.css";
 
 export default function Config() {
+  const [email, setEmail] = useState("");
+  const [editando, setEditando] = useState(false);
+
+  useEffect(() => {
+    async function buscarEmail() {
+      try {
+        const resposta = await fetch(
+          "https://backend-ti5-production.up.railway.app/settings",
+          {
+            method: "GET",
+            headers: { "Content-Type": "application/json" },
+            // body: JSON.stringify({ email: "arthursetragni@gmail.com" }),
+          }
+        );
+        if (!resposta.ok) throw new Error("Erro");
+        const dados = await resposta.json();
+        setEmail(dados.email || "");
+      } catch (err) {
+        console.error("Erro ao buscar e-mail:", err);
+      }
+    }
+    buscarEmail();
+  }, []);
+
+  async function salvarEmail() {
+    try {
+      const resposta = await fetch(
+        "https://backend-ti5-production.up.railway.app/settings",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email }),
+        }
+      );
+      if (!resposta.ok) throw new Error("Erro");
+      setEditando(false);
+    } catch (err) {
+      console.error("Erro ao salvar e-mail:", err);
+    }
+  }
+
   return (
     <section className={`${styles.config}`}>
       <Container>
         <img
           src={`../elliotEngrenagem.png`}
           className={`${styles.imgEngrenagem}`}
-        ></img>
+        />
         <Row>
           <Col xs="10" md="6" className="mx-auto">
             <Row>
@@ -18,59 +62,50 @@ export default function Config() {
             </Row>
             <Row>
               <Col>
-                <form>
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    salvarEmail();
+                  }}
+                >
                   <h4 className={`${styles.textTitle} mb-3`}>
-                    Celular para notificações:
+                    E-mail para notificações:
                   </h4>
                   <Row>
-                    <Col xs="8" className="">
-                      {" "}
+                    <Col xs="8">
                       <input
-                        type="text"
+                        type="email"
                         className={`form-control ${styles.inputCustom}`}
-                        placeholder="31999728395"
+                        placeholder="Seu melhor e-mail"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        disabled={!editando}
                       />
                     </Col>
                     <Col
                       xs="1"
-                      className="d-flex align-items-center justify-content-center "
+                      className="d-flex align-items-center justify-content-center"
                     >
                       <i
                         className={`bi bi-pencil-square ${styles.iconCustom}`}
+                        style={{ cursor: "pointer" }}
+                        onClick={() => setEditando(true)}
                       ></i>
                     </Col>
                     <Col
                       xs="1"
-                      className="d-flex align-items-center justify-content-center "
+                      className="d-flex align-items-center justify-content-center"
                     >
-                      <i className={`bi bi-plus ${styles.iconCustom}`}></i>
+                      <button
+                        type="submit"
+                        className="btn p-0"
+                        disabled={!editando}
+                      >
+                        <i className={`bi bi-plus ${styles.iconCustom}`}></i>
+                      </button>
                     </Col>
                   </Row>
                 </form>
-              </Col>
-            </Row>
-            <Row className="mt-3">
-              <Col>
-                <Row>
-                  <h4 className={`${styles.textTitle} mb-3`}>Notificações:</h4>
-                </Row>
-                <Row>
-                  <Col xs="12" md="4">
-                    <button className={`${styles.btnCustom} mb-3 mb-md-none`}>
-                      Ativar
-                    </button>
-                  </Col>
-                  <Col xs="12" md="4">
-                    <button className={`${styles.btnCustom}`}>Desativar</button>
-                  </Col>
-                </Row>
-              </Col>
-            </Row>
-            <Row className="mt-4">
-              <Col>
-                <button className={`${styles.btnLimpar}`}>
-                  Limpar Histórico
-                </button>
               </Col>
             </Row>
           </Col>
