@@ -56,10 +56,85 @@
     border-radius: 30px;
 }
 
-.top10direito{
-    min-height: 500px;
-    background-color: #dfdfdf;
-    border-radius: 30px 0px 30px 0px;
+/* Estilo do container */
+.top10direito {
+  background-color: #f8f9fa;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo do cabeçalho */
+.top10Header {
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.top10Title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+.titleUnderline {
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(to right, #3498db, #2ecc71);
+  margin: 0 auto;
+  border-radius: 3px;
+}
+
+/* Estilo da lista */
+.customListGroup {
+  border-radius: 10px !important;
+  border: none !important;
+}
+
+.listItem {
+  border-left: none !important;
+  border-right: none !important;
+  transition: all 0.3s ease;
+}
+
+.listItem:hover {
+  transform: translateX(5px);
+  background-color: #f1f8fe !important;
+}
+
+/* Estilo dos itens */
+.rankBadge {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
+  text-align: center;
+  background-color: #e3f2fd;
+  color: #1976d2;
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+.macAddress {
+  max-width: 150px;
+  font-family: 'Courier New', monospace;
+  color: #34495e;
+}
+
+.countBadge {
+  background-color: #e3f2fd !important;
+  color: #1976d2 !important;
+  font-weight: 500;
+  padding: 0.35em 0.65em !important;
+}
+
+/* Estilo para o primeiro colocado */
+.listItem:nth-child(1) .rankBadge {
+  background-color: #ffd700;
+  color: #b8860b;
+}
+
+.listItem:nth-child(1) .countBadge {
+  background-color: #fff3cd !important;
+  color: #856404 !important;
 }
 
 .coisasClicaveis{
@@ -156,4 +231,7 @@
 .conteudo2mobile{
     font-size: 1rem;
     color: #104C42;
+}
+.textoStatus{
+    color:#000
 }

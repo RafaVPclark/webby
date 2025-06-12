@@ -160,7 +160,11 @@ export default function Historico() {
                     />
 
                     <Tabs defaultActiveKey="desconhecidos" id="device-tabs">
-                      <Tab eventKey="conhecidos" title="Conhecidos">
+                      <Tab
+                        eventKey="conhecidos"
+                        title="Conhecidos"
+                        className={`${styles.tabCustom}`}
+                      >
                         <div
                           style={{
                             maxHeight: "60vh",

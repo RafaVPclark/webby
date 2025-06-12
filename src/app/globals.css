@@ -90,4 +90,18 @@ p {
 .fade-in-right.show {
   opacity: 1;
   transform: translateX(0);
+}/* Estilo para as abas */
+.nav-tabs .nav-link {
+  color: #004D40; /* Cor do texto quando não ativo */
+}
+
+.nav-tabs .nav-link.active {
+  color: #004D40; /* Cor do texto quando ativo */
+  background-color: transparent; /* Ou outra cor de fundo se desejar */
+  border-color: transparent transparent #004D40; /* Cor da borda inferior */
+}
+
+/* Se precisar estilizar o hover */
+.nav-tabs .nav-link:hover {
+  color: #004D40; /* Cor do texto ao passar o mouse */
 }
