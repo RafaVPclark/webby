@@ -49,12 +49,13 @@ export default function Config() {
   return (
     <section className={`${styles.config}`}>
       <Container>
-        <img
-          src={`../elliotEngrenagem.png`}
-          className={`${styles.imgEngrenagem}`}
-        />
         <Row>
           <Col xs="10" md="6" className="mx-auto">
+            <img
+              src={`../elliotEngrenagem.png`}
+              className={`${styles.imgEngrenagem}`}
+              alt="Engrenagem decorativa"
+            />
             <Row>
               <Col className="text-center mt-4 mb-4">
                 <h2 className={`${styles.textTitle}`}>Configurações</h2>

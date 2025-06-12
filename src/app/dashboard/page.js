@@ -153,7 +153,7 @@ export default function Dashboard() {
                                 nameKey="name"
                                 cx="50%"
                                 cy="50%"
-                                outerRadius={120}
+                                outerRadius={80}
                                 label={({ name, percent }) =>
                                   `${name}: ${(percent * 100).toFixed(0)}%`
                                 }
@@ -209,6 +209,15 @@ export default function Dashboard() {
                           <h4 className={`${styles.conteudo}`}>Dispositivos</h4>
                         </Link>
                       </Col>
+                      <Col className={`${styles.alinhamento}`}>
+                        <Link
+                          href={"/notificacoes"}
+                          className={styles.linkSemEstilo}
+                        >
+                          <i className={`bi bi-bell ${styles.icon2}`}></i>
+                          <h4 className={`${styles.conteudo}`}>Notificações</h4>
+                        </Link>
+                      </Col>
                     </Row>
                   </Col>
                 </Row>
@@ -232,16 +241,16 @@ export default function Dashboard() {
         </Row>
       </Container>
       {/* Versão mobile */}
-      <Container fluid className="d-md-none">
+      <Container fluid className="d-md-none position-relative">
+        <img
+          src="../hackeremcima.png"
+          className={`${styles.hackerMobileImg}`}
+        ></img>
         <Row>
           <Col xs="10" className="mx-auto mt-4 text-end">
             <h2 className={`${styles.title}`}>DASHBOARD</h2>
           </Col>
         </Row>
-        <img
-          src="../hackeremcima.png"
-          className={`${styles.hackerMobileImg}`}
-        ></img>
         <Row>
           <Col xs="10" className={`mx-auto ${styles.graficoMobile} mt-3 `}>
             <Row className="align-items-center justify-content-between pt-5">
@@ -255,7 +264,7 @@ export default function Dashboard() {
                         nameKey="name"
                         cx="50%"
                         cy="50%"
-                        outerRadius={80}
+                        outerRadius={60}
                         label={({ name, percent }) =>
                           `${name}: ${(percent * 100).toFixed(0)}%`
                         }
@@ -294,7 +303,9 @@ export default function Dashboard() {
             <Row>
               <Col className={`${styles.alinhamento}`}>
                 <Link href={"/devices"} className={styles.linkSemEstilo}>
-                  <i className={`bi bi-search me-4 ${styles.icon2mobile}`}></i>
+                  <i
+                    className={`bi bi-phone-vibrate me-4 ${styles.icon2mobile}`}
+                  ></i>
                   <h4 className={`${styles.conteudo2mobile} me-4`}>
                     Dispositivos
                   </h4>
@@ -312,6 +323,12 @@ export default function Dashboard() {
                 <Link href={"/config"} className={styles.linkSemEstilo}>
                   <i className={`bi bi-gear-fill ${styles.icon2mobile}`}></i>
                   <h4 className={`${styles.conteudo2mobile}`}>Configurações</h4>
+                </Link>
+              </Col>
+              <Col className={`${styles.alinhamento}`}>
+                <Link href={"/notificacoes"} className={styles.linkSemEstilo}>
+                  <i className={`bi bi-bell ${styles.icon2mobile}`}></i>
+                  <h4 className={`${styles.conteudo2mobile}`}>Notificações</h4>
                 </Link>
               </Col>
             </Row>

@@ -1,38 +1,33 @@
-.config{
+.config {
     overflow-x: hidden !important;
-}
-.inputCustom{
-    border: 1px solid #898989;
-}
-.textTitle{
-    color: #104C42;
-}
-.iconCustom{
-    font-size: 1.5rem;
-    color: #104C42;
-}
-.btnCustom{
-    width: 150px;
-    height: 40px;
-    background-color: #104C42;
-    border-radius: 30px;
-    border: 0px;
-    color: #fff;
+    position: relative; /* Adicione isso */
+    min-height: 100vh; /* Garante que a seção ocupe pelo menos a altura da tela */
+    padding-bottom: 100px; /* Espaço para a engrenagem */
 }
 
-.btnLimpar{
-    width: 150px;
-    height: 40px;
-    background-color: #fff;
-    border: 3px solid #104C42;
-    color: #104C42;
-    border-radius: 30px;
-}
-
-.imgEngrenagem{
-    width: 200px;
-    position: absolute;
-    bottom: 100;
-    right: -65;
+.imgEngrenagem {
+    width: 150px; /* Reduzindo um pouco o tamanho */
+    position: fixed; /* Mudando para fixed para melhor controle */
+    bottom: 20px; /* Distância do fundo */
+    right: 20px; /* Distância da direita */
     transform: rotate(-60deg);
+    z-index: 0; /* Garante que fique atrás do conteúdo */
+}
+
+/* Para telas maiores, podemos aumentar um pouco */
+@media (min-width: 768px) {
+    .imgEngrenagem {
+        width: 200px;
+        bottom: 40px;
+        right: -50px;
+    }
+}
+
+/* Para telas muito pequenas (mobile) */
+@media (max-width: 576px) {
+    .imgEngrenagem {
+        width: 120px;
+        bottom: 10px;
+        right: -40px;
+    }
 }

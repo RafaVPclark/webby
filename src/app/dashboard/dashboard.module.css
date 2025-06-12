@@ -99,11 +99,21 @@
     color: #104C42;
 }
 
-.hackerMobileImg{
+.hackerMobileImg {
     position: absolute;
-    width: 160px;
-    top: -10;
-    left: 30;
+    width: 120px; /* Reduzi um pouco o tamanho para mobile */
+    top: 10px;   /* Ajuste fino da posição vertical */
+    left: 20px;  /* Ajuste fino da posição horizontal */
+    z-index: 1;  /* Garante que fique acima do conteúdo */
+}
+
+/* Ajuste para telas um pouco maiores (tablets pequenos) */
+@media (min-width: 400px) {
+    .hackerMobileImg {
+        width: 140px;
+        top: 15px;
+        left: 30px;
+    }
 }
 .icon2mobile{
     width: 60px;

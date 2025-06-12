@@ -1,0 +1,88 @@
+.detalhes {
+  height: 100vh;
+  background-color: #104C42 !important;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.conteudoDireita {
+  background-color: #fff;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.imgCustom {
+  filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.7));
+}
+
+.imgCustom2 {
+  position: relative;
+  width: 250px;
+  margin-bottom: -100px;
+  z-index: 3;
+}
+
+.conteudoTitle {
+  color: #004D40;
+}
+
+.conteudoTitleSecundario {
+  font-size: 0.9rem; 
+  color: #004D40;
+}
+
+.btnCustom {
+  background-color: #004D40;
+  border-radius: 30px;
+  color: #ddd;
+  width: 120px;
+}
+
+.cardConteudo {
+  border-radius: 30px 0px 30px 0px;
+  background-color: #ddd;
+  min-height: 300px;
+}
+
+.detalhesHistoria {
+  min-height: 80vh;
+  border-radius: 50px 50px 0px 0px;
+  padding-top: 100px;
+  background-color: #fff;
+  z-index: 0;
+}
+
+.inputCustom {
+  max-width: 200px;
+  margin: 0 auto;
+  background: #fff;
+  border: 2px solid #104C42;
+}
+
+.iconCustom {
+  font-size: 1rem;
+  color: #004D40;
+}
+
+.acoesRapidasContent {
+  color: #004D40;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .conteudoDireita {
+    overflow-y: auto;
+    height: auto;
+  }
+  
+  .detalhes {
+    height: auto;
+    overflow-y: auto;
+  }
+  
+  .inputCustom {
+    width: 100%;
+    max-width: 100%;
+  }
+}

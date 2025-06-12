@@ -1,0 +1,166 @@
+.chatbotContainer {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.chatbotButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.3s ease;
+}
+
+.chatbotButton:hover {
+  transform: scale(1.1);
+}
+
+.chatbotIcon {
+  filter: drop-shadow(0 0 5px rgba(0, 255, 0, 0.7));
+}
+
+.chatWindow {
+  position: absolute;
+  bottom: 80px;
+  right: 0;
+  width: 350px;
+  height: 500px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #00ff00;
+}
+
+.chatHeader {
+  background-color: #000;
+  color: #00ff00;
+  padding: 15px;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  color: #00ff00;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.messagesContainer {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  background-color: #111;
+}
+
+.welcomeMessage {
+  color: #ccc;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.message {
+  margin-bottom: 15px;
+  padding: 10px 15px;
+  border-radius: 18px;
+  max-width: 80%;
+  word-wrap: break-word;
+  line-height: 1.4;
+  font-size: 14px;
+}
+
+.userMessage {
+  background-color: #00ff00;
+  color: #000;
+  margin-left: auto;
+  border-bottom-right-radius: 5px;
+}
+
+.botMessage {
+  background-color: #333;
+  color: #fff;
+  margin-right: auto;
+  border-bottom-left-radius: 5px;
+}
+
+.inputArea {
+  display: flex;
+  padding: 10px;
+  background-color: #222;
+  border-top: 1px solid #444;
+}
+
+.inputArea textarea {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #444;
+  border-radius: 20px;
+  resize: none;
+  background-color: #333;
+  color: #fff;
+  outline: none;
+  min-height: 40px;
+  max-height: 100px;
+}
+
+.inputArea textarea:focus {
+  border-color: #00ff00;
+}
+
+.inputArea button {
+  margin-left: 10px;
+  padding: 0 15px;
+  background-color: #00ff00;
+  color: #000;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.inputArea button:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+}
+
+.typingIndicator {
+  display: flex;
+  padding: 10px;
+}
+
+.typingIndicator span {
+  height: 8px;
+  width: 8px;
+  background-color: #00ff00;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 2px;
+  animation: bounce 1.5s infinite ease-in-out;
+}
+
+.typingIndicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typingIndicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+  0%, 60%, 100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-5px);
+  }
+}
