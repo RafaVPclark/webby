@@ -184,7 +184,7 @@ export default function Devices() {
                           <button
                             onClick={prevKnown}
                             disabled={currentKnownIndex === 0}
-                            className="btn btn-secondary mx-2"
+                            className={`btn ${styles.btnCustom} mx-2`}
                           >
                             Anteriores
                           </button>
@@ -193,7 +193,7 @@ export default function Devices() {
                             disabled={
                               currentKnownIndex + 3 >= knownDevices.length
                             }
-                            className="btn btn-secondary mx-2"
+                            className={`btn ${styles.btnCustom} mx-2`}
                           >
                             Próximos
                           </button>
@@ -277,7 +277,7 @@ export default function Devices() {
                           <button
                             onClick={prevUnknown}
                             disabled={currentUnknownIndex === 0}
-                            className="btn btn-secondary mx-2"
+                            className={`btn ${styles.btnCustom} mx-2`}
                           >
                             Anteriores
                           </button>
@@ -286,7 +286,7 @@ export default function Devices() {
                             disabled={
                               currentUnknownIndex + 3 >= unknownDevices.length
                             }
-                            className="btn btn-secondary mx-2"
+                            className={`btn ${styles.btnCustom} mx-2`}
                           >
                             Próximos
                           </button>
@@ -366,12 +366,12 @@ export default function Devices() {
                                     className="d-flex flex-column justify-content-center"
                                   >
                                     <h4 className={`${styles.mobileCardTitle}`}>
-                                      Tipo
+                                      Status
                                     </h4>
                                     <h5
                                       className={`${styles.mobileCardContent}`}
                                     >
-                                      {device.tipo || "Eletrônico"}
+                                      {device.status || "Desconhecido"}
                                     </h5>
                                   </Col>
                                   <Col
@@ -467,12 +467,12 @@ export default function Devices() {
                                     className="d-flex flex-column justify-content-center"
                                   >
                                     <h4 className={`${styles.mobileCardTitle}`}>
-                                      Tipo
+                                      Status
                                     </h4>
                                     <h5
                                       className={`${styles.mobileCardContent}`}
                                     >
-                                      {device.tipo || "Desconhecido"}
+                                      {device.status || "Desconhecido"}
                                     </h5>
                                   </Col>
                                   <Col

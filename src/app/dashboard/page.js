@@ -132,16 +132,6 @@ export default function Dashboard() {
                         <h5>{desconhecidos} Desconhecidos</h5>
                       </Col>
                     </Row>
-                    {/* <Row>
-                      <Col md="8">
-                        {" "}
-                        <h1 className="mt-5 ms-5">Gráfico</h1>
-                      </Col>
-                      <Col md="4">
-                        <h5>{conhecidos} Conhecidos</h5>
-                        <h5>{desconhecidos} Desconhecidos</h5>
-                      </Col>
-                    </Row> */}
                     <Row>
                       <Col md="12" className="mx-auto">
                         <div style={{ width: "100%", height: 400 }}>
@@ -301,31 +291,29 @@ export default function Dashboard() {
             className={`d-flex align-items-center justify-content-center mt-3`}
           >
             <Row>
-              <Col className={`${styles.alinhamento}`}>
+              <Col xs="6" className={`${styles.alinhamento}`}>
                 <Link href={"/devices"} className={styles.linkSemEstilo}>
                   <i
-                    className={`bi bi-phone-vibrate me-4 ${styles.icon2mobile}`}
+                    className={`bi bi-phone-vibrate ${styles.icon2mobile}`}
                   ></i>
-                  <h4 className={`${styles.conteudo2mobile} me-4`}>
-                    Dispositivos
-                  </h4>
+                  <h4 className={`${styles.conteudo2mobile}`}>Dispositivos</h4>
                 </Link>
               </Col>
 
-              <Col className={`${styles.alinhamento}`}>
+              <Col xs="6" className={`${styles.alinhamento}`}>
                 <Link href={"/historico"} className={styles.linkSemEstilo}>
                   <i className={`bi bi-book ${styles.icon2mobile}`}></i>
                   <h4 className={`${styles.conteudo2mobile}`}>Histórico</h4>
                 </Link>
               </Col>
 
-              <Col className={`${styles.alinhamento}`}>
+              <Col xs="6" className={`${styles.alinhamento}`}>
                 <Link href={"/config"} className={styles.linkSemEstilo}>
                   <i className={`bi bi-gear-fill ${styles.icon2mobile}`}></i>
                   <h4 className={`${styles.conteudo2mobile}`}>Configurações</h4>
                 </Link>
               </Col>
-              <Col className={`${styles.alinhamento}`}>
+              <Col xs="6" className={`${styles.alinhamento}`}>
                 <Link href={"/notificacoes"} className={styles.linkSemEstilo}>
                   <i className={`bi bi-bell ${styles.icon2mobile}`}></i>
                   <h4 className={`${styles.conteudo2mobile}`}>Notificações</h4>
@@ -353,16 +341,6 @@ export default function Dashboard() {
                 </h5>
               </Col>
             </Row>
-            {/* <Row className="align-items-center mt-4 mb-5">
-              <Col xs="2" className="d-flex justify-content-center">
-                <i className={`bi bi-broadcast-pin ${styles.icon3mobile}`}></i>
-              </Col>
-              <Col xs="8" className="mx-auto">
-                <h5 className="m-0">
-                  Conexões ativas no momento: {totalDispositivos}
-                </h5>
-              </Col>
-            </Row> */}
           </Col>
         </Row>
         <Row className="mt-3 mb-5">

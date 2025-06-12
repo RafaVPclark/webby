@@ -93,16 +93,25 @@ export default function Config() {
                         onClick={() => setEditando(true)}
                       ></i>
                     </Col>
+                  </Row>
+                  <Row>
                     <Col
-                      xs="1"
-                      className="d-flex align-items-center justify-content-center"
+                      xs="8"
+                      // md="3"
+                      className="d-flex align-items-center justify-content-center mt-3 mx-auto"
                     >
                       <button
                         type="submit"
-                        className="btn p-0"
+                        className={`btn ${styles.btnCustom}`}
                         disabled={!editando}
+                        onMouseEnter={(e) =>
+                          e.currentTarget.classList.add(styles.hoverEffect)
+                        }
+                        onMouseLeave={(e) =>
+                          e.currentTarget.classList.remove(styles.hoverEffect)
+                        }
                       >
-                        <i className={`bi bi-plus ${styles.iconCustom}`}></i>
+                        Enviar alterações
                       </button>
                     </Col>
                   </Row>

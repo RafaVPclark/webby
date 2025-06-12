@@ -65,67 +65,90 @@ const Chatbot = () => {
       handleSendMessage();
     }
   };
-
   return (
     <div className={styles.chatbotContainer}>
       {isOpen && (
-        <div className={styles.chatWindow}>
-          <div className={styles.chatHeader}>
-            <h3>Webby Assistente</h3>
-            <button
-              className={styles.closeButton}
-              onClick={() => setIsOpen(false)}
-            >
-              &times;
-            </button>
-          </div>
-          <div className={styles.messagesContainer}>
-            {messages.length === 0 ? (
-              <div className={styles.welcomeMessage}>
-                <p>Olá! Sou o Elliot, o hacker. Como posso te ajudar hoje?</p>
-              </div>
-            ) : (
-              messages.map((message, index) => (
-                <div
-                  key={index}
-                  className={`${styles.message} ${
-                    message.sender === "user"
-                      ? styles.userMessage
-                      : styles.botMessage
-                  }`}
+        <div className={styles.chatbotContainer}>
+          {isOpen && (
+            <div className={styles.chatWindow}>
+              <div className={styles.chatHeader}>
+                <h3>Webby Assistente</h3>
+                <button
+                  className={styles.closeButton}
+                  onClick={() => setIsOpen(false)}
                 >
-                  {message.text}
-                </div>
-              ))
-            )}
-            {isLoading && (
-              <div className={styles.message}>
-                <div className={styles.typingIndicator}>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
+                  &times;
+                </button>
               </div>
-            )}
-            <div ref={messagesEndRef} />
-          </div>
-          <div className={styles.inputArea}>
-            <textarea
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              onKeyPress={handleKeyPress}
-              placeholder="Digite sua mensagem..."
-              disabled={isLoading}
+              <div className={styles.messagesContainer}>
+                {messages.length === 0 ? (
+                  <div className={styles.welcomeMessage}>
+                    <p>
+                      Olá! Sou o Elliot, o hacker. Como posso te ajudar hoje?
+                    </p>
+                  </div>
+                ) : (
+                  messages.map((message, index) => (
+                    <div
+                      key={index}
+                      className={`${styles.message} ${
+                        message.sender === "user"
+                          ? styles.userMessage
+                          : styles.botMessage
+                      }`}
+                    >
+                      {message.text}
+                    </div>
+                  ))
+                )}
+                {isLoading && (
+                  <div className={styles.message}>
+                    <div className={styles.typingIndicator}>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </div>
+                  </div>
+                )}
+                <div ref={messagesEndRef} />
+              </div>
+              <div className={styles.inputArea}>
+                <textarea
+                  value={inputValue}
+                  onChange={(e) => setInputValue(e.target.value)}
+                  onKeyPress={handleKeyPress}
+                  placeholder="Digite sua mensagem..."
+                  disabled={isLoading}
+                />
+                <button
+                  onClick={handleSendMessage}
+                  disabled={isLoading || !inputValue.trim()}
+                >
+                  Enviar
+                </button>
+              </div>
+            </div>
+          )}
+          <button
+            className={styles.chatbotButton}
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            <Image
+              src="/hacker.png"
+              alt="Chatbot"
+              width={60}
+              height={60}
+              className={styles.chatbotIcon}
             />
-            <button
-              onClick={handleSendMessage}
-              disabled={isLoading || !inputValue.trim()}
-            >
-              Enviar
-            </button>
-          </div>
+          </button>
         </div>
       )}
+
+      {/* Adicione esta div antes do botão do chatbot */}
+      {!isOpen && (
+        <div className={styles.chatbotCallout}>Tem alguma dúvida?</div>
+      )}
+
       <button
         className={styles.chatbotButton}
         onClick={() => setIsOpen(!isOpen)}

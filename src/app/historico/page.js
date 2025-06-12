@@ -106,7 +106,12 @@ export default function Historico() {
       <Col xs="6" className="mx-auto">
         <h4>MAC</h4>
         {dispositivos.map((dispositivo, index) => (
-          <h5 key={`${dispositivo._id}-mac-${index}`}>{dispositivo.mac}</h5>
+          <h5
+            key={`${dispositivo._id}-mac-${index}`}
+            className={`${styles.truncarTexto}`}
+          >
+            {dispositivo.mac}
+          </h5>
         ))}
       </Col>
       <Col xs="4" className="mx-auto">
@@ -151,7 +156,7 @@ export default function Historico() {
                       type="date"
                       value={dataSelecionada}
                       onChange={(e) => setDataSelecionada(e.target.value)}
-                      className={`form-control ${styles.inputCustom} mb-3`}
+                      className={`form-control ${styles.inputCustom} mb-3 `}
                     />
 
                     <Tabs defaultActiveKey="desconhecidos" id="device-tabs">
@@ -167,7 +172,7 @@ export default function Historico() {
                             agruparPorData(filtrarDispositivos("conhecidos"))
                           ).map(([data, dispositivos]) => (
                             <div key={`conhecidos-${data}`}>
-                              <h5 className="text-center mt-4">{data}</h5>
+                              {/* <h5 className="text-center mt-4">{data}</h5> */}
                               <Col
                                 md="10"
                                 className={`mx-auto ${styles.cardConteudo} mt-3`}
@@ -268,7 +273,7 @@ export default function Historico() {
                     agruparPorData(filtrarDispositivos("conhecidos"))
                   ).map(([data, dispositivos]) => (
                     <div key={`conhecidos-mobile-${data}`}>
-                      <h5 className="text-center mt-4">{data}</h5>
+                      {/* <h5 className="text-center mt-4">{data}</h5> */}
                       <Col
                         xs="10"
                         className={`mx-auto ${styles.cardConteudo} mt-3`}

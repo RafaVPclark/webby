@@ -1,6 +1,6 @@
 .login{
     height: 100vh;
-    overflow-y: hidden;
+    overflow-y: hidden !important;
 }
 .ladoEsquerdo{
     height: 100vh;
@@ -13,13 +13,28 @@
     filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.7)); /* luz verde, altere */
 }
 .btnCustom{
+    color: #104C42;
     width: 100px;
-    background-color: #104C42;
-    color: #fff;
+    border-radius: 15px;
+    background-color: #fff;
+    border: 2px solid #104C42;
 }
+
+.btnCustom:hover{
+    background-color: #104C42;
+    border: 2px solid #ddd;
+    color: #ddd;
+}
+
 .btnCustom2{
     background-color: #104C42;
     color: #fff;
+    border: 2px solid #104C42;
+}
+.btnCustom2:hover{
+    background-color: #ffffff;
+    border: 2px solid #004D40;
+    color: #004D40;
 }
 .textPrimario{
     color: #104C42;

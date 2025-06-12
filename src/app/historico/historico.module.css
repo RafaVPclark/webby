@@ -1,63 +1,201 @@
 .historico {
-  height: 100vh;
-  background-color: #104C42 !important;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0C7C59, #004D40);
   overflow: hidden;
-  margin: 0;
-  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .conteudoDireita {
   background-color: #fff;
   min-height: 100vh;
+  /* padding-top: 50px; */
   overflow: hidden;
-}
-
-.imgCustom {
-  filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.7));
-}
-
-.imgCustom2 {
   position: relative;
-  width: 250px;
-  margin-bottom: -100px;
-  z-index: 3;
+}
+
+/* Estilo para a imagem do hacker */
+.imgCustom {
+  filter: drop-shadow(0 0 30px rgba(0, 255, 200, 0.5));
+  transition: transform 0.5s ease;
+  max-height: 80vh;
+  object-fit: contain;
+  padding-left: 50px;
+}
+
+.imgCustom:hover {
+  transform: scale(1.02);
 }
 
 .conteudoTitle {
   color: #004D40;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 77, 64, 0.1);
+  margin-bottom: 30px;
+  position: relative;
+  display: inline-block;
 }
 
-.btnCustom {
-  background-color: #004D40;
+.conteudoTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #004D40, #57CC99);
+  border-radius: 3px;
+}
+
+/* Tabs Customizadas */
+.nav-tabs {
+  border-bottom: 2px solid #e0e0e0;
+  margin-bottom: 20px;
+}
+
+.nav-tabs .nav-link {
+  border: none;
+  color: #757575;
+  font-weight: 600;
+  padding: 12px 25px;
+  margin: 0 5px;
   border-radius: 30px;
-  color: #ddd;
-  width: 120px;
+  background-color: #f5f5f5;
+  transition: all 0.3s ease;
 }
 
+.nav-tabs .nav-link:hover {
+  color: #004D40;
+  background-color: #e0f2f1;
+}
+
+.nav-tabs .nav-link.active {
+  color: white;
+  background: linear-gradient(135deg, #004D40, #00695C);
+  box-shadow: 0 4px 15px rgba(0, 77, 64, 0.3);
+  border: none;
+}
+
+/* Cards de Histórico */
 .cardConteudo {
-  border-radius: 30px 0px 30px 0px;
-  background-color: #ddd;
-  min-height: 300px;
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 15px rgba(0, 77, 64, 0.1);
+  border: 1px solid #e0e0e0;
 }
 
-.detalhesHistoria {
-  min-height: 80vh;
-  border-radius: 50px 50px 0px 0px;
-  padding-top: 100px;
-  background-color: #fff;
-  z-index: 0;
+.cardConteudo h4 {
+  color: #004D40;
+  font-weight: 600;
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e0e0e0;
 }
 
+.cardConteudo h5 {
+  color: #333;
+  font-weight: 500;
+  margin: 10px 0;
+  padding: 8px 0;
+  border-bottom: 1px dashed #e0e0e0;
+}
+
+/* Input de Data */
+.inputCustom {
+  border: 2px solid #e0e0e0;
+  border-radius: 30px;
+  padding: 10px 15px;
+  font-size: 0.9rem;
+  color: #004D40;
+  box-shadow: 0 2px 5px rgba(0, 77, 64, 0.1);
+  transition: all 0.3s ease;
+  max-width: 200px;
+  margin: 0 auto 20px;
+  text-align: center;
+}
+
+.inputCustom:focus {
+  border-color: #004D40;
+  box-shadow: 0 0 0 0.2rem rgba(0, 77, 64, 0.25);
+  outline: none;
+}
+
+/* Data de Agrupamento */
+.data-group {
+  color: #004D40;
+  font-weight: 600;
+  margin: 20px 0 10px;
+  padding: 5px 0;
+  border-bottom: 2px solid #004D40;
+  display: inline-block;
+}
+
+/* Mensagem de lista vazia */
+.empty-message {
+  color: #757575;
+  font-style: italic;
+  text-align: center;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+/* MOBILE STYLES */
 @media (max-width: 768px) {
-  .conteudoDireita {
+  .conteudoDireita,
+  .historico {
     overflow-y: auto;
     height: auto;
   }
-  .historico{
-    height: auto;
+  
+  .imgCustom2 {
+    width: 200px;
+    margin: 0 auto -80px;
+    display: block;
+    filter: drop-shadow(0 0 20px rgba(0, 255, 200, 0.5));
+    position: relative;
+    z-index: 3;
+  }
+  
+  .detalhesHistoria {
+    min-height: auto;
+    border-radius: 40px 40px 0 0;
+    padding: 50px 20px 30px;
+    background-color: #fff;
+    margin-top: 20px;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .nav-tabs .nav-link {
+    padding: 10px 15px;
+    font-size: 0.85rem;
+  }
+  
+  .cardConteudo {
+    padding: 15px;
+  }
+  
+  .inputCustom {
+    width: 100%;
+    max-width: none;
   }
 }
-.inputCustom {
-  max-width: 200px;
-  margin: 0 auto;
+
+/* Efeitos de animação */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.truncarTexto {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

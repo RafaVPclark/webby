@@ -173,10 +173,10 @@ export default function Notificacoes() {
       {/* MOBILE */}
       <Container fluid className="d-md-none">
         <Row>
-          <Col className="mx-auto text-center">
+          <Col className="text-center">
             <img
-              src={`../hacker1mao.png`}
-              className={`${styles.imgCustom2} ms-5 text-center`}
+              src="../hacker1mao.png"
+              className={styles.imgCustom2}
               alt="Hacker"
             />
           </Col>
