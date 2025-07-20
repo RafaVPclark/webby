@@ -26,7 +26,7 @@ export default function DetalhesDispositivo() {
   const fetchDeviceDetails = async () => {
     try {
       const response = await fetch(
-        `https://backend-ti5-production.up.railway.app/devices/${mac}`
+        `https://webby-backend.vercel.app/devices/${mac}`
       );
       if (!response.ok) throw new Error("Erro ao buscar dispositivo");
       const data = await response.json();
@@ -52,7 +52,7 @@ export default function DetalhesDispositivo() {
   const handleSave = async () => {
     try {
       const response = await fetch(
-        "https://backend-ti5-production.up.railway.app/devices/classify",
+        "https://webby-backend.vercel.app/devices/classify",
         {
           method: "POST",
           headers: {

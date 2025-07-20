@@ -15,7 +15,7 @@ export default function Historico() {
     async function buscarHistory() {
       try {
         const resposta = await fetch(
-          "https://backend-ti5-production.up.railway.app/devices/history",
+          "https://webby-backend.vercel.app/devices/history",
           {
             method: "GET",
             headers: {

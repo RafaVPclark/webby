@@ -14,7 +14,7 @@ export default function Notificacoes() {
       try {
         setLoading(true);
         const resposta = await fetch(
-          "https://backend-ti5-production.up.railway.app/notifications",
+          "https://webby-backend.vercel.app/notifications",
           {
             method: "GET",
             headers: {

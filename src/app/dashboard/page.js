@@ -89,7 +89,7 @@ export default function Dashboard() {
       try {
         // Buscar overview
         const respostaOverview = await fetch(
-          "https://backend-ti5-production.up.railway.app/stats/overview",
+          "https://webby-backend.vercel.app/stats/overview",
           {
             method: "GET",
             headers: {
@@ -107,7 +107,7 @@ export default function Dashboard() {
 
         // Buscar usuários frequentes
         const respostaFrequentes = await fetch(
-          "https://backend-ti5-production.up.railway.app/stats/frequent-users",
+          "https://webby-backend.vercel.app/stats/frequent-users",
           {
             method: "GET",
             headers: {

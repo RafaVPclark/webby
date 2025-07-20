@@ -12,7 +12,7 @@ export default function Config() {
     async function buscarEmail() {
       try {
         const resposta = await fetch(
-          "https://backend-ti5-production.up.railway.app/settings",
+          "https://webby-backend.vercel.app/settings",
           {
             method: "GET",
             headers: { "Content-Type": "application/json" },
@@ -32,7 +32,7 @@ export default function Config() {
   async function salvarEmail() {
     try {
       const resposta = await fetch(
-        "https://backend-ti5-production.up.railway.app/settings",
+        "https://webby-backend.vercel.app/settings",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

@@ -13,7 +13,7 @@ export default function Devices() {
     async function buscarDevices() {
       try {
         const resposta = await fetch(
-          "https://backend-ti5-production.up.railway.app/devices/detected",
+          "https://webby-backend.vercel.app/devices/detected",
           {
             method: "GET",
             headers: {
